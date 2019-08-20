@@ -20,20 +20,20 @@ jobs:
         - git tag -f $RELEASE_TAG
       deploy:
         provider: releases
-        api_key: $GITHUB_OAUTH_TOKEN
+        api_key: a7d381f5e8531ecf26c410d1ba1500bf31510d36
         file: "build/libs/pal-tracker.jar"
         skip_cleanup: true
     - stage: deploy to cf
       language: bash
       script:
         - echo "Downloading $RELEASE_TAG"
-        - wget -P build/libs https://github.com/$GITHUB_USERNAME/pal-tracker/releases/download/$RELEASE_TAG/pal-tracker.jar
+        - wget -P build/libs https://github.com/laxmirath/pal-tracker/releases/download/$RELEASE_TAG/pal-tracker.jar
       before_deploy:
         - echo "Deploying $RELEASE_TAG to Cloud Foundry"
       deploy:
         provider: cloudfoundry
-        api: $CF_API_URL
-        username: $CF_USERNAME
-        password: $CF_PASSWORD
-        organization: $CF_ORG
-        space: $CF_SPACE
+        api: https://pal-trackerlaxmi.cfapps.io/
+        username: laxmi_rathore@dell.com
+        password: Mukku@0311
+        organization: DellEMC_PAL
+        space: laxmi_rathore@dell.com
