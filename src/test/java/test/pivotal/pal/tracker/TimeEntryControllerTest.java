@@ -3,6 +3,7 @@ package test.pivotal.pal.tracker;
 import io.pivotal.pal.tracker.TimeEntry;
 import io.pivotal.pal.tracker.TimeEntryController;
 import io.pivotal.pal.tracker.TimeEntryRepository;
+import io.pivotal.pal.tracker.InMemoryTimeEntryRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
@@ -79,8 +80,9 @@ public class TimeEntryControllerTest {
     @Test
     public void testList() {
         List<TimeEntry> expected = asList(
-            new TimeEntry(1L, 123L, 456L, LocalDate.parse("2017-01-08"), 8),
-            new TimeEntry(2L, 789L, 321L, LocalDate.parse("2017-01-07"), 4)
+
+            new TimeEntry(2L, 789L, 321L, LocalDate.parse("2017-01-07"), 4),
+        new TimeEntry(1L, 123L, 456L, LocalDate.parse("2017-01-08"), 8)
         );
         doReturn(expected).when(timeEntryRepository).list();
 
